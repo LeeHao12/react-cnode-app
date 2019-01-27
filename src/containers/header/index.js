@@ -7,10 +7,26 @@ const { Header: LayoutHeader } = Layout
 export const HEADER_HEIGHT = 60
 
 class Header extends Component {
-  render() {
+  renderOptions() {
     return (
-      <LayoutHeader className={styles.root} style={{ height: HEADER_HEIGHT }}>
-        <div>1</div>
+      <div className={styles.options}>
+        <div className={styles.item}>home</div>
+        <div className={styles.item}>news</div>
+        <div className={styles.item}>freshman</div>
+        <div className={styles.item}>logout</div>
+      </div>
+    )
+  }
+
+  render() {
+    const style = {
+      height: HEADER_HEIGHT
+    }
+
+    return (
+      <LayoutHeader className={styles.root} style={style}>
+        <div className={styles.logo}>CNODE</div>
+        {this.renderOptions()}
       </LayoutHeader>
     )
   }

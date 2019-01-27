@@ -8,6 +8,7 @@ module.exports = override(
     style: true
   }),
   addLessLoader({
+    // 重写 less-loader 是否可以让 create-react-app 支持 less?
     javascriptEnabled: true,
     modifyVars: theme
   })

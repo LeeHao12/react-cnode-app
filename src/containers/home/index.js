@@ -1,48 +1,58 @@
 import React, { Component } from "react"
-import { Layout, Button } from "antd"
+import { Layout } from "antd"
 import { HEADER_HEIGHT } from "../header"
-import { Redirect } from "react-router-dom"
 import styles from "./index.module.scss"
 import { FOOTER_HEIGHT } from "../app"
-import { Link, Route } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
+import List from "./List"
+import { AppRedirect } from "../../components/redirect"
+
 const { Content } = Layout
 
 class Home extends Component {
+  renderLinks() {
+    const { history } = this.props
+    return (
+      <div>
+        <div
+          onClick={() => {
+            history.push("/all")
+          }}
+        >
+          all
+        </div>
+        <div
+          onClick={() => {
+            history.push("/good")
+          }}
+        >
+          good
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <Content
         className={styles.root}
         style={{ marginTop: HEADER_HEIGHT, marginBottom: FOOTER_HEIGHT }}
       >
-        {/* 使用 Route 组件配合重定向 */}
-        <Route
-          exact
-          path="/"
-          render={() => {
-            return (
-              <Redirect
-                exact
-                to={{
-                  pathname: "/all"
-                }}
-              />
-            )
-          }}
-        />
+        <AppRedirect from="/" to="/all" />
 
-        <Link to={"/all"}>全部</Link>
+        {this.renderLinks()}
 
-        <Route
-          path="/all"
-          render={() => {
-            return <div>all</div>
-          }}
-        />
-
-        <Button onClick={() => {}} />
+        <Switch>
+          <Route path="/:tab(all|good)" component={List} />
+          <Route
+            render={() => {
+              return <div>404</div>
+            }}
+          />
+        </Switch>
       </Content>
     )
   }
 }
 
-export default Home
+export default withRouter(Home)

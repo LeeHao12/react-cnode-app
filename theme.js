@@ -1,1 +1,1 @@
-exports.theme = { "@primary-color": "#fa4312" }
+exports.theme = { "@primary-color": "#E87555" }

@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Layout } from "antd"
 import Header from "../header"
 import Content from "../home"
-import { BrowserRouter as Router } from "react-router-dom"
 
 import styles from "./index.module.scss"
 
@@ -27,7 +26,7 @@ class App extends Component {
   }
 
   render() {
-    return <Router>{this.renderComponent()}</Router>
+    return this.renderComponent()
   }
 }
 
