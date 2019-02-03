@@ -8,6 +8,8 @@
     "connected-react-router": "^6.2.2",
     "history": "^4.7.2",
     "normalize.css": "^8.0.1",
+    "normalizr": "^3.3.0",
+    "rc-texty": "^0.2.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

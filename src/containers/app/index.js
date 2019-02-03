@@ -2,8 +2,9 @@ import React, { Component } from "react"
 import { Layout } from "antd"
 import Header from "../header"
 import Content from "../home"
-
 import styles from "./index.module.scss"
+
+import 'rc-texty/assets/index.css';
 
 export const FOOTER_HEIGHT = 60
 
