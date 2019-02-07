@@ -10,6 +10,10 @@ import { createBrowserHistory } from "history"
 import { routerMiddleware, ConnectedRouter } from "connected-react-router"
 import "normalize.css"
 
+import moment from "moment"
+
+moment.locale("CN")
+
 // redux tool
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 export const history = createBrowserHistory()

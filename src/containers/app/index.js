@@ -1,26 +1,45 @@
 import React, { Component } from "react"
 import { Layout } from "antd"
 import Header from "../header"
-import Content from "../home"
+import Home from "../home"
 import styles from "./index.module.scss"
+import { Route, Redirect, Switch } from "react-router-dom"
+import "rc-texty/assets/index.css"
+import { FOOTER_HEIGHT } from "../../styles/config"
 
-import 'rc-texty/assets/index.css';
 
-export const FOOTER_HEIGHT = 60
 
 class App extends Component {
+  renderContent() {
+    return (
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return <Redirect exact to={"/all"} />
+          }}
+        />
+
+        <Route component={Home} />
+      </Switch>
+    )
+  }
+
   renderComponent() {
     return (
       <Layout className={styles.root}>
         <Header />
 
-        <Content />
+        {this.renderContent()}
 
         <Layout.Footer
           className={styles.footer}
           style={{ height: FOOTER_HEIGHT }}
         >
-          欢迎 start
+          <div>
+            <div>欢迎 start</div>
+          </div>
         </Layout.Footer>
       </Layout>
     )

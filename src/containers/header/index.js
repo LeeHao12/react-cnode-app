@@ -2,10 +2,9 @@ import React, { Component } from "react"
 import { Layout } from "antd"
 import Texty from "rc-texty"
 import styles from "./index.module.scss"
+import { HEADER_HEIGHT } from "../../styles/config"
 
 const { Header: LayoutHeader } = Layout
-
-export const HEADER_HEIGHT = 60
 
 function animation(e) {
   switch (e.index) {
@@ -83,10 +82,7 @@ class Header extends Component {
   renderOptions() {
     return (
       <div className={styles.options}>
-        <div className={styles.item}>home</div>
-        <div className={styles.item}>news</div>
-        <div className={styles.item}>freshman</div>
-        <div className={styles.item}>logout</div>
+        <div className={styles.item}>AboutMe</div>
       </div>
     )
   }
@@ -103,6 +99,7 @@ class Header extends Component {
             CNODE COMMUNITY
           </Texty>
         </div>
+
         {this.renderOptions()}
       </LayoutHeader>
     )
