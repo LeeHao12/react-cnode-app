@@ -16,6 +16,11 @@ export class Card extends React.Component {
       top
     } = this.props.data
 
+    if (!author) {
+      console.log("this.props.data: ", this.props.data)
+      return null
+    }
+
     return (
       <div className={styles.root}>
         <div className={styles.author}>

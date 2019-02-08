@@ -1,10 +1,12 @@
 import React from "react"
-import { Spin } from "antd"
+import { Spin, Icon } from "antd"
 import { connect } from "react-redux"
 import { homeAction } from "../../actions/home"
 import {
   homeListIsLoadingSelector,
-  homeListSelector
+  homeListSelector,
+  homePageSelector,
+  homeLoadingMoreSelector
 } from "../../selectors/home"
 import styles from "./List.module.scss"
 import { HOME_TABS_HEIGHT } from "../../styles/config"
@@ -17,7 +19,13 @@ class RawList extends React.Component {
   }
 
   render() {
-    const { isLoading, list } = this.props
+    const {
+      isLoading,
+      list,
+      clickNextPage,
+      pageIndex,
+      loadingMore
+    } = this.props
 
     if (isLoading) {
       return (
@@ -38,6 +46,21 @@ class RawList extends React.Component {
         {list.map(data => {
           return <Card data={data} key={data.id} />
         })}
+
+        {loadingMore ? (
+          <Spin />
+        ) : (
+          <div
+            className={styles.nextPage}
+            key={"nextPage"}
+            onClick={() => {
+              clickNextPage(pageIndex + 1)
+            }}
+          >
+            <span className={styles.text}>下一页 </span>
+            <Icon type="arrow-right" className={styles.icon} />
+          </div>
+        )}
       </QueueAnim>
     )
   }
@@ -46,13 +69,18 @@ class RawList extends React.Component {
 const mapStateToProps = state => {
   return {
     isLoading: homeListIsLoadingSelector(state),
-    list: homeListSelector(state)
+    list: homeListSelector(state),
+    pageIndex: homePageSelector(state),
+    loadingMore: homeLoadingMoreSelector(state)
   }
 }
 
 const mapDispatchToProps = {
   mount: () => {
     return homeAction.home.mount()
+  },
+  clickNextPage: pageIndex => {
+    return homeAction.home.clickNextPage(pageIndex)
   }
 }
 

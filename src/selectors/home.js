@@ -11,3 +11,13 @@ export const homeListSelector = createSelector(
   homeSelector,
   home => home.list
 )
+
+export const homePageSelector = createSelector(
+  homeSelector,
+  home => home.page
+)
+
+export const homeLoadingMoreSelector = createSelector(
+  homeSelector,
+  home => home.loadingMore
+)

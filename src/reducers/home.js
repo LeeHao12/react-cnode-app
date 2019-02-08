@@ -3,24 +3,52 @@ import { homeAction } from "../actions/home"
 
 const defaultState = {
   loading: false,
-  list: []
+  loadingMore: false,
+  list: [],
+  page: 1
 }
 
-const { loadRequire, loadSuccess, loadError } = homeAction.home
+const {
+  loadRequire,
+  loadSuccess,
+  loadMoreRequire,
+  loadMoreSuccess,
+  clickNextPage
+} = homeAction.home
 
 export const homeReducer = handleActions(
   {
-    [combineActions(loadRequire, loadSuccess)]: (state, action) => {
+    [combineActions(
+      loadRequire,
+      loadSuccess,
+      loadMoreRequire,
+      loadMoreSuccess,
+      clickNextPage
+    )]: (state, action) => {
       switch (action.type) {
+        case clickNextPage.toString(): {
+          return { ...state, page: action.payload.pageIndex }
+        }
+        // 加载
         case loadRequire.toString(): {
-          return { ...state, loading: true }
+          return { ...state, loading: true, page: 1 }
         }
         case loadSuccess.toString(): {
           return { ...state, loading: false, list: action.payload.data }
         }
-        case loadError.toString(): {
-          return { ...state, loading: false }
+
+        // 翻页
+        case loadMoreRequire.toString(): {
+          return { ...state, loadingMore: true }
         }
+        case loadMoreSuccess.toString(): {
+          return {
+            ...state,
+            loadingMore: false,
+            list: [...state.list, ...action.payload.data]
+          }
+        }
+
         default:
           return state
       }

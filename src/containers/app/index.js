@@ -4,10 +4,8 @@ import Header from "../header"
 import Home from "../home"
 import styles from "./index.module.scss"
 import { Route, Redirect, Switch } from "react-router-dom"
-import "rc-texty/assets/index.css"
 import { FOOTER_HEIGHT } from "../../styles/config"
-
-
+import "rc-texty/assets/index.css"
 
 class App extends Component {
   renderContent() {

@@ -1,7 +1,28 @@
+@import "styles/variable.scss";
+
 .root {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 0 5px;
+}
+
+.nextPage {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+
+  .text {
+    color: $primary-color;
+    margin-right: 2px;
+    cursor: pointer;
+  }
+
+  .icon {
+    color: $primary-color;
+    cursor: pointer;
+  }
 }

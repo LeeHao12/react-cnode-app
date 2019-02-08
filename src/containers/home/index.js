@@ -15,7 +15,6 @@ import { homeAction } from "../../actions/home"
 
 const { Content } = Layout
 const TabPane = Tabs.TabPane
-
 const tabsConfig = [
   {
     key: "/all",
@@ -26,6 +25,21 @@ const tabsConfig = [
     key: "/good",
     iconType: "like",
     text: "精华"
+  },
+  {
+    key: "/share",
+    iconType: "team",
+    text: "分享"
+  },
+  {
+    key: "/ask",
+    iconType: "message",
+    text: "问答"
+  },
+  {
+    key: "/job",
+    iconType: "notification",
+    text: "招聘"
   }
 ]
 
@@ -81,7 +95,7 @@ class Home extends Component {
   renderContent() {
     return (
       <Switch>
-        <Route path="/:tab(all|good)" component={List} />
+        <Route path="/:tab(all|good|ask|share|job)" component={List} />
       </Switch>
     )
   }
