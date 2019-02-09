@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://LeeHao92.github.io/react-cnode-app/precache-manifest.7a15e96dc69ac0e1a0c9485f4eb567a5.js"
+  "https://LeeHao92.github.io/react-cnode-app/precache-manifest.6e7c74f58045aa6cbb298de37bcef7e3.js"
 );
 
 workbox.clientsClaim();
