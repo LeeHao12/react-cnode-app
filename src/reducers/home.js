@@ -1,5 +1,5 @@
 import { handleActions, combineActions } from "redux-actions"
-import { homeAction } from "../actions/home"
+import { homeAction } from "../actions"
 
 const defaultState = {
   loading: false,

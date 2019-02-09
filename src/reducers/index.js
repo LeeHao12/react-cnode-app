@@ -1,15 +1,13 @@
 import { combineReducers } from "redux"
 import { homeReducer } from "./home"
+import { detailReducer } from "./detail"
 import { connectRouter } from "connected-react-router"
-
-// const reducer = combineReducers({
-//   home: homeReducer
-// })
-
-// export default reducer
+import { accessReducer } from "./access"
 
 export default history =>
   combineReducers({
     router: connectRouter(history),
-    home: homeReducer
+    home: homeReducer,
+    detail: detailReducer,
+    access: accessReducer
   })

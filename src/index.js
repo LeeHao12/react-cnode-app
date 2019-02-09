@@ -9,6 +9,7 @@ import App from "./containers/app"
 import { createBrowserHistory } from "history"
 import { routerMiddleware, ConnectedRouter } from "connected-react-router"
 import "normalize.css"
+import "github-markdown-css/github-markdown.css"
 
 import moment from "moment"
 

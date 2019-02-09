@@ -3,7 +3,6 @@ import { Layout, Tabs, Icon } from "antd"
 import styles from "./index.module.scss"
 import { connect } from "react-redux"
 
-import { Route, Switch, withRouter } from "react-router-dom"
 import List from "./List"
 import {
   HOME_TABS_HEIGHT,
@@ -11,7 +10,7 @@ import {
   HEADER_HEIGHT,
   PAGE_PADDING
 } from "../../styles/config"
-import { homeAction } from "../../actions/home"
+import { homeAction } from "../../actions"
 
 const { Content } = Layout
 const TabPane = Tabs.TabPane
@@ -48,8 +47,10 @@ class Home extends Component {
     windowWidth: window.innerWidth
   }
 
+  listener = null
+
   componentDidMount() {
-    window.addEventListener("resize", () => {
+    this.listener = window.addEventListener("resize", () => {
       this.setState({
         windowWidth: window.innerWidth
       })
@@ -57,7 +58,7 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize")
+    window.removeEventListener("resize", this.listener)
   }
 
   renderTabs() {
@@ -92,14 +93,6 @@ class Home extends Component {
     )
   }
 
-  renderContent() {
-    return (
-      <Switch>
-        <Route path="/:tab(all|good|ask|share|job)" component={List} />
-      </Switch>
-    )
-  }
-
   render() {
     return (
       <Content
@@ -111,14 +104,11 @@ class Home extends Component {
         }}
       >
         {this.renderTabs()}
-        {this.renderContent()}
+
+        <List />
       </Content>
     )
   }
-}
-
-const mapStateToProps = state => {
-  return {}
 }
 
 const mapDispatchToProps = {
@@ -127,9 +117,7 @@ const mapDispatchToProps = {
   }
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Home)
-)
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(Home)

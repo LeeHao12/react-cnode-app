@@ -15,3 +15,21 @@ export const homeAction = createActions({
     LOAD_MORE_ERROR: error => ({ error })
   }
 })
+
+export const detailAction = createActions({
+  DETAIL: {
+    MOUNT: undefined,
+    LOAD_REQUIRE: undefined,
+    LOAD_SUCCESS: data => ({ data }),
+    LOAD_ERROR: error => ({ error })
+  }
+})
+
+export const tokenAction = createActions({
+  TOKEN: {
+    login: token => token,
+    LOAD_REQUIRE: undefined,
+    LOAD_SUCCESS: (data, token) => ({ data, token }),
+    LOAD_ERROR: error => error
+  }
+})

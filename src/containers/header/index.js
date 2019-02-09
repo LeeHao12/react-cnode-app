@@ -1,8 +1,11 @@
 import React, { Component } from "react"
-import { Layout } from "antd"
+import { Layout, Modal, Input, notification } from "antd"
 import Texty from "rc-texty"
 import styles from "./index.module.scss"
 import { HEADER_HEIGHT } from "../../styles/config"
+import { history } from "../.."
+import { connect } from "react-redux"
+import { tokenAction } from "../../actions"
 
 const { Header: LayoutHeader } = Layout
 
@@ -79,10 +82,48 @@ function animation(e) {
 }
 
 class Header extends Component {
+  state = {
+    showLoginDialog: false,
+    showAboutMeDialog: false,
+    token: ""
+  }
+
+  componentDidMount() {
+    // notification.open({
+    //   message: "welcome",
+    //   description:
+    //     "欢迎来访 😀，本客户端使用 React 全家桶，不定期更新，欢迎 star."
+    // })
+  }
+
+  componentWillReceiveProps() {
+    // error 无 -> 有
+  }
+
   renderOptions() {
     return (
       <div className={styles.options}>
-        <div className={styles.item}>AboutMe</div>
+        <div
+          className={styles.item}
+          onClick={() => {
+            this.setState({
+              showLoginDialog: true
+            })
+          }}
+        >
+          Login
+        </div>
+
+        <div
+          className={styles.item}
+          onClick={() => {
+            this.setState({
+              showAboutMeDialog: true
+            })
+          }}
+        >
+          AboutMe
+        </div>
       </div>
     )
   }
@@ -94,16 +135,77 @@ class Header extends Component {
 
     return (
       <LayoutHeader className={styles.root} style={style}>
-        <div className={styles.logo}>
+        <div
+          className={styles.logo}
+          onClick={() => {
+            history.push("/")
+          }}
+        >
           <Texty enter={animation} leave={animation}>
             CNODE COMMUNITY
           </Texty>
         </div>
 
         {this.renderOptions()}
+
+        <Modal
+          footer={null}
+          title="AboutMe"
+          visible={this.state.showAboutMeDialog}
+          onCancel={() => {
+            this.setState({
+              showAboutMeDialog: false
+            })
+          }}
+        >
+          <div>北京前端一枚</div>
+          <div>e-mail：lee_haoo@163.com</div>
+          <div>
+            github：
+            <a href="https://github.com/LeeHao92">
+              https://github.com/LeeHao92
+            </a>
+          </div>
+        </Modal>
+
+        <Modal
+          okButtonDisabled
+          title="Login"
+          visible={this.state.showLoginDialog}
+          onOk={() => {
+            this.props.login(this.state.token)
+          }}
+          onCancel={() => {
+            this.setState({
+              showLoginDialog: false
+            })
+          }}
+        >
+          <Input
+            placeholder="请输入 token"
+            value={this.state.token}
+            onChange={e => {
+              this.setState({ token: e.target.value })
+            }}
+          />
+          <a href="https://cnodejs.org/setting"> 获取 token</a>
+        </Modal>
       </LayoutHeader>
     )
   }
 }
 
-export default Header
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = {
+  login: token => {
+    return tokenAction.token.login(token)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header)

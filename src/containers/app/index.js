@@ -2,15 +2,18 @@ import React, { Component } from "react"
 import { Layout } from "antd"
 import Header from "../header"
 import Home from "../home"
+import Detail from "../detail"
 import styles from "./index.module.scss"
 import { Route, Redirect, Switch } from "react-router-dom"
 import { FOOTER_HEIGHT } from "../../styles/config"
+
 import "rc-texty/assets/index.css"
 
 class App extends Component {
   renderContent() {
     return (
       <Switch>
+        {/* 重定向 */}
         <Route
           exact
           path="/"
@@ -19,7 +22,15 @@ class App extends Component {
           }}
         />
 
-        <Route component={Home} />
+        <Route exact path="/:tab(all|good|ask|share|job)" component={Home} />
+
+        <Route exact path="/detail/:id" component={Detail} />
+
+        <Route
+          render={() => {
+            return <div>404</div>
+          }}
+        />
       </Switch>
     )
   }

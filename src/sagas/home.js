@@ -1,5 +1,5 @@
 import { takeLatest, all, fork, call, put, select } from "redux-saga/effects"
-import { homeAction } from "../actions/home"
+import { homeAction } from "../actions"
 import { getFetch } from "./utils"
 import queryString from "query-string"
 import { createMatchSelector } from "connected-react-router"

@@ -5,7 +5,9 @@
   "dependencies": {
     "antd": "^3.12.4",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.2.2",
+    "github-markdown-css": "^3.0.1",
     "history": "^4.7.2",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
@@ -21,7 +23,8 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-saga": "^1.0.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "showdown": "^1.9.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

@@ -1,13 +1,13 @@
 import React from "react"
 import { Spin, Icon } from "antd"
 import { connect } from "react-redux"
-import { homeAction } from "../../actions/home"
+import { homeAction } from "../../actions"
 import {
   homeListIsLoadingSelector,
   homeListSelector,
   homePageSelector,
   homeLoadingMoreSelector
-} from "../../selectors/home"
+} from "../../selectors"
 import styles from "./List.module.scss"
 import { HOME_TABS_HEIGHT } from "../../styles/config"
 import { Card } from "./Card"
@@ -57,7 +57,7 @@ class RawList extends React.Component {
               clickNextPage(pageIndex + 1)
             }}
           >
-            <span className={styles.text}>下一页 </span>
+            <span className={styles.text}>加载更多</span>
             <Icon type="arrow-right" className={styles.icon} />
           </div>
         )}

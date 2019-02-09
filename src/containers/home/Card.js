@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./Card.module.scss"
 import { Tag } from "antd"
 import moment from "moment"
+import { history } from "../.."
 
 export class Card extends React.Component {
   render() {
@@ -13,16 +14,17 @@ export class Card extends React.Component {
       visit_count,
       last_reply_at,
       good,
-      top
+      top,
+      id
     } = this.props.data
 
-    if (!author) {
-      console.log("this.props.data: ", this.props.data)
-      return null
-    }
-
     return (
-      <div className={styles.root}>
+      <div
+        className={styles.root}
+        onClick={() => {
+          history.push("/detail/" + id)
+        }}
+      >
         <div className={styles.author}>
           <img src={author.avatar_url} alt="avatar" className={styles.avatar} />
           <span className={styles.loginname}>{author.loginname}</span>
@@ -33,7 +35,7 @@ export class Card extends React.Component {
           <div className={styles.content}>{content.substr(0, 250)}</div>
           <div className={styles.reply}>
             <span className={styles.item}>
-              最后回复：{moment(last_reply_at).format("YYYY-MM-DD hh:mm:ss")}
+              最后回复：{moment(last_reply_at).format("YYYY年MM月DD日 hh:mm:ss")}
             </span>
             <span className={styles.item}>回复：{reply_count}</span>
             <span className={styles.item}>浏览：{visit_count}</span>

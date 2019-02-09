@@ -1,6 +1,7 @@
 import { createSelector } from "reselect"
 
 const homeSelector = state => state.home
+const detailSelector = state => state.detail
 
 export const homeListIsLoadingSelector = createSelector(
   homeSelector,
@@ -20,4 +21,14 @@ export const homePageSelector = createSelector(
 export const homeLoadingMoreSelector = createSelector(
   homeSelector,
   home => home.loadingMore
+)
+
+export const detailIsLoadingSelector = createSelector(
+  detailSelector,
+  detail => detail.loading
+)
+
+export const detailDataSelector = createSelector(
+  detailSelector,
+  detail => detail.data
 )
