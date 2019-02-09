@@ -18,7 +18,7 @@ css-module、sass、github-markdown-css（文章样式同 github）
 
 ### Deploy
 
-部署到 `gh-pages` 分支，原本是想自己写脚本实现自动部署，结果 `create-react-app` 实现了此功能，[文档](https://facebook.github.io/create-react-app/docs/deployment)。
+部署到 `gh-pages` 分支
 
 ```js
 yarn add gh-pages
