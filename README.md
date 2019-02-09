@@ -1,43 +1,36 @@
-### 主要技术栈
+### 效果
 
-#### 框架
+![demo](./demo.gif)
+
+### 主要技术栈
 
 react
 
-#### ui 组件
+antd、motion（动画）
 
-antd
+react-router-4、connected-react-router（saga 中获取 router）
 
-motion
+redux、redux-saga（异步处理）、redux-actions（create action）、reselect（selete data）
 
-#### 路由
+css-module、sass、github-markdown-css（文章样式同 github）
 
-react-router 4
+### Deploy
 
-connected-react-router
+部署到 `gh-pages` 分支，原本是想自己写脚本实现自动部署，结果 `create-react-app` 实现了此功能，[文档](https://facebook.github.io/create-react-app/docs/deployment)。
 
-#### 数据存储
+```js
+yarn add gh-pages
+"scripts": {
+  ...others config,
+  "predeploy": "yarn build",
+  "deploy": "gh-pages -d build"
+}
+```
 
-redux
+### TODO
 
-redux-saga
-
-redux-actions
-
-normalizr
-
-reselect
-
-#### 样式
-
-css-module
-
-sass
-
----
-
-首页    day1
-
-详情页  day2
-
-登录    day3
+- [ ] 发布帖子
+- [ ] 回复评论
+- [ ] 点击加载更多 修改为 下拉加载更多
+- [ ] 优化样式
+- [ ] 通过 Travis 部署到 Nginx
