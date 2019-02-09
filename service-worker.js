@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://LeeHao92.github.io/react-cnode-app/precache-manifest.6e7c74f58045aa6cbb298de37bcef7e3.js"
+  "react-cnode-app/precache-manifest.eb3f70d31f61821a45f7b84273ebddb2.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("https://LeeHao92.github.io/react-cnode-app/index.html", {
+workbox.routing.registerNavigationRoute("react-cnode-app/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
