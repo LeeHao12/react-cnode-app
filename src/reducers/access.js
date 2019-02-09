@@ -6,7 +6,6 @@ const defaultState = {
   loading: false,
   error: undefined,
   user: undefined,
-  token: undefined
 }
 
 const { loadRequire, loadSuccess, loadError } = tokenAction.token

@@ -47,7 +47,13 @@ class App extends Component {
           style={{ height: FOOTER_HEIGHT }}
         >
           <div>
-            <div>欢迎 start</div>
+            <a
+              href="https://github.com/LeeHao92/react-cnode-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              欢迎 start
+            </a>
           </div>
         </Layout.Footer>
       </Layout>

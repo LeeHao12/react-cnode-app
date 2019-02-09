@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Layout, Modal, Input, notification } from "antd"
+import { Layout, Modal, Input } from "antd"
 import Texty from "rc-texty"
 import styles from "./index.module.scss"
 import { HEADER_HEIGHT } from "../../styles/config"
@@ -162,7 +162,11 @@ class Header extends Component {
           <div>e-mail：lee_haoo@163.com</div>
           <div>
             github：
-            <a href="https://github.com/LeeHao92">
+            <a
+              href="https://github.com/LeeHao92/react-cnode-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               https://github.com/LeeHao92
             </a>
           </div>

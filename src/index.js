@@ -17,14 +17,9 @@ moment.locale("CN")
 
 // redux tool
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-console.log("33")
-let tempHistory = createBrowserHistory({
-  basename: "/react-cnode-app"
+export const history = createBrowserHistory({
+  basename: process.env.NODE_ENV === "development" ? "/" : "/react-cnode-app"
 })
-if (process.env.NODE_ENV === "development") {
-  tempHistory = createBrowserHistory()
-}
-export const history = tempHistory
 
 const sagaMiddleware = createSagaMiddleware()
 
